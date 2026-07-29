@@ -1,50 +1,101 @@
+/* 全体の背景（くすみカラーのグラデーション） */
 body {
-  background-color: #f0f4f8;
+  margin: 0;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  font-family: sans-serif;
+  background: linear-gradient(135deg, #e8f0f2 0%, #d4e2e6 100%);
+  font-family: "Noto Sans JP", sans-serif;
 }
 
+/* ガラスモフィズム風のカード */
 .card {
-  background-color: #ffffff;
-  border-radius: 16px;
-  padding: 40px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  padding: 40px 30px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 360px;
+  max-width: 400px;
+  width: 90%;
 }
 
-h1 {
-  color: #2d3748;
-  margin-bottom: 4px;
+/* お名前 */
+.card h1 {
+  font-size: 1.6rem;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.05em;
 }
 
+/* 肩書 */
 .job {
-  color: #718096;
-  font-size: 14px;
-  margin-top: 0;
+  font-size: 0.9rem;
+  color: #6c7a89;
+  margin-bottom: 25px;
 }
 
+/* メッセージ部分 */
 .message {
-  color: #2d3748;
-  font-size: 18px;
-  margin: 24px 0;
-  min-height: 54px;
+  font-size: 1.1rem;
+  color: #333333;
+  margin-bottom: 35px;
+  min-height: 3.5rem; /* 切り替え時のガタつき防止 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  padding: 10px;
 }
 
-button {
-  background-color: #4299e1;
+/* おしゃれなボタン */
+#change-btn {
+  background-color: #7d9d9c;
   color: #ffffff;
   border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  border-radius: 30px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(125, 157, 156, 0.3);
 }
 
-button:hover {
-  background-color: #3182ce;
+/* ホバー時の演出 */
+#change-btn:hover {
+  background-color: #6a8887;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(125, 157, 156, 0.4);
 }
+
+/* 写真を囲むコンテナ（名前と肩書の間の余白調整も兼ねる） */
+.photo-container {
+  margin: 20px 0; /* 上下の余白 */
+  display: flex;
+  justify-content: center;
+}
+
+/* 顔写真のスタイル（丸くする） */
+.profile-img {
+  width: 120px;      /* 写真の大きさ */
+  height: 120px;     /* 写真の大きさ（正方形にする） */
+  object-fit: cover; /* 画像が伸びないようにトリミング */
+  border-radius: 50%; /* 角丸を50%にして正円にする */
+  border: 4px solid rgba(255, 255, 255, 0.8); /* 白い枠線 */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* ふんわりした影 */
+}
+
+/* 
+   ↓ 肩書の既存スタイルを少し調整（写真との間隔を空けるため、marginを削除）
+   .job {
+     font-size: 0.9rem;
+     color: #6c7a89;
+     margin-bottom: 25px; 
+   }
+   ↑ 元のままでも良いですが、.photo-containerで余白を取っているので、
+     .jobの margin-bottom を減らすとバランスが良くなるかもしれません。
+*/
