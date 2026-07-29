@@ -96,6 +96,4 @@ body {
      color: #6c7a89;
      margin-bottom: 25px; 
    }
-   ↑ 元のままでも良いですが、.photo-containerで余白を取っているので、
-     .jobの margin-bottom を減らすとバランスが良くなるかもしれません。
 */
