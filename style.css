@@ -1,99 +1,132 @@
-/* 全体の背景（くすみカラーのグラデーション） */
+/* --- 1. 全体のスタイル（背景をかわいく） --- */
 body {
   margin: 0;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #e8f0f2 0%, #d4e2e6 100%);
-  font-family: "Noto Sans JP", sans-serif;
+  /* ターコイズブルーの薄いグラデーション + シマエナガの卵のようなドット柄 */
+  background-color: #e0f7fa;
+  background-image: radial-gradient(#b2ebf2 1px, transparent 1px);
+  background-size: 20px 20px;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  color: #546e7a;
 }
 
-/* ガラスモフィズム風のカード */
+/* --- 2. カードのスタイル（ふんわり感をアップ） --- */
 .card {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.9); /* 少し白を強めて明るく */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  padding: 40px 30px;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  /* ぷっくりした太めの白枠 */
+  border: 5px solid #ffffff;
+  padding: 50px 30px;
+  /* 角丸をさらに大きくして、より優しく */
+  border-radius: 40px;
+  /* 影を柔らかく大きく（シマエナガの羽毛のようなイメージ） */
+  box-shadow: 0 15px 35px rgba(0, 150, 136, 0.15);
   text-align: center;
   max-width: 400px;
   width: 90%;
+  position: relative;
+  /* 枠線が内側に入るように調整 */
+  box-sizing: border-box;
 }
 
-/* お名前 */
+/* --- 3. デコレーション（シマエナガの足跡をイメージしたアイコン） --- */
+.card::before {
+  content: "🐾"; /* 足跡マークを可愛く配置 */
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 1.5rem;
+  opacity: 0.5;
+}
+
+/* --- 4. テキストのスタイル --- */
 .card h1 {
-  font-size: 1.6rem;
-  color: #2c3e50;
-  margin: 0 0 8px 0;
-  letter-spacing: 0.05em;
+  font-size: 1.8rem;
+  color: #00796b; /* 濃いターコイズ */
+  margin: 0 0 10px 0;
+  font-weight: bold;
 }
 
-/* 肩書 */
+.photo-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-img {
+  width: 140px; /* 少し大きく */
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  /* 写真の枠もターコイズに */
+  border: 5px solid #b2ebf2;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
 .job {
-  font-size: 0.9rem;
-  color: #6c7a89;
-  margin-bottom: 25px;
+  font-size: 1rem;
+  color: #0097a7;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
-/* メッセージ部分 */
+/* メッセージ部分（吹き出し風に） */
 .message {
   font-size: 1.1rem;
-  color: #333333;
-  margin-bottom: 35px;
-  min-height: 3.5rem; /* 切り替え時のガタつき防止 */
+  line-height: 1.6;
+  color: #455a64;
+  margin-bottom: 30px;
+  min-height: 4em;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
-  padding: 10px;
+  background-color: #f0fdfd; /* ごく薄いターコイズ */
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+}
+/* 吹き出しの三角 */
+.message::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #f0fdfd;
 }
 
-/* おしゃれなボタン */
+/* --- 5. ボタンのスタイル（ぷるんと動くアニメーション） --- */
 #change-btn {
-  background-color: #7d9d9c;
+  background-color: #00bcd4; /* 鮮やかなターコイズブルー */
   color: #ffffff;
   border: none;
-  padding: 12px 28px;
-  font-size: 0.95rem;
-  border-radius: 30px;
+  padding: 18px 35px; /* 大きめにして押しやすく */
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px; /* カプセル型でかわいく */
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(125, 157, 156, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+  /* 少し立体的に */
+  border-bottom: 4px solid #008394;
 }
 
-/* ホバー時の演出 */
+/* ホバー時：色が少し濃くなり、浮き上がる */
 #change-btn:hover {
-  background-color: #6a8887;
+  background-color: #00acc1;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(125, 157, 156, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 188, 212, 0.5);
 }
 
-/* 写真を囲むコンテナ（名前と肩書の間の余白調整も兼ねる） */
-.photo-container {
-  margin: 20px 0; /* 上下の余白 */
-  display: flex;
-  justify-content: center;
+/* クリック時：沈み込む（active） */
+#change-btn:active {
+  transform: translateY(2px);
+  border-bottom: none; /* 枠線を消して押した感を出す */
+  margin-bottom: -2px; /* 位置を調整 */
 }
-
-/* 顔写真のスタイル（丸くする） */
-.profile-img {
-  width: 120px;      /* 写真の大きさ */
-  height: 120px;     /* 写真の大きさ（正方形にする） */
-  object-fit: cover; /* 画像が伸びないようにトリミング */
-  border-radius: 50%; /* 角丸を50%にして正円にする */
-  border: 4px solid rgba(255, 255, 255, 0.8); /* 白い枠線 */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* ふんわりした影 */
-}
-
-/* 
-   ↓ 肩書の既存スタイルを少し調整（写真との間隔を空けるため、marginを削除）
-   .job {
-     font-size: 0.9rem;
-     color: #6c7a89;
-     margin-bottom: 25px; 
-   }
-*/
